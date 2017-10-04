@@ -58,6 +58,21 @@ foreach (new DirectoryIterator(BASE_DIR . 'icons/') as $file)
         append_icon($file->getFilename(), BASE_DIR . 'icons/');
 }
 
+function strip_image_metadata(&$bytes)
+{
+    if (! class_exists('Imagick'))
+        return;
+    
+    $img = new \Imagick();
+    $img->readImageBlob($bytes);
+    $img->stripImage();
+
+    $bytes = $img->getImageBlob();
+
+    $img->clear();
+    $img->destroy();
+}
+
 $iconlist = $ts->ftGetFileList(0, '', '/icons/');
 $available = [];
 
@@ -122,6 +137,8 @@ foreach ($icons as $gid => $filename)
         printf('Failed to get contents of file "%s"' . PHP_EOL, $filename);
         continue;
     }
+    
+    strip_image_metadata($bytes);
     
     $crc = crc32($bytes);
     $size = strlen($bytes);
