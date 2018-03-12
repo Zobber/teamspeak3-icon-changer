@@ -1,7 +1,7 @@
 # TeamSpeak 3 Icon Changer
 ## Requirements
 To use this application you need at least PHP 5.3+ installed.
-You can install [Imagick extension][imagick].
+You also can install [Imagick extension][imagick] to enable auto image stripping to reduce icon size before upload.
 ## Usage
 1. Put icons into `icons/` (you can use subdirectories) with name format `<group_id>.png`.
 2. Setup connection details in `changer.php`
