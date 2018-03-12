@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Program developed to make ServerQuery group icons changes easier.
+ *
+ * @author Łukasz Adamski <lukasz.adamski@eterprime.eu>
+ */
+
 define('BASE_DIR', dirname(__FILE__) . '/');
 
 $c = [
